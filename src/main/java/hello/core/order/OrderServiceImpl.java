@@ -14,8 +14,9 @@ public class OrderServiceImpl implements OrderService {
     // DIP 위반
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
-    // -> 추상화(인터페이스)에만 의존하도록 변경
+    // -> 추상화(인터페이스)에만 의존하도록 변경 (DIP 만족)
     private final DiscountPolicy discountPolicy;
+    // 클라이언트 코드의 OCP 만족
 
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
