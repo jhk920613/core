@@ -21,7 +21,23 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
     // 클라이언트 코드의 OCP 만족
 
-    @Autowired
+    // 수정자를 활용한 방식
+//    private  MemberRepository memberRepository;
+//    private  DiscountPolicy discountPolicy;
+//
+//    @Autowired
+//    public void setMemberRepository(MemberRepository memberRepository) {
+//        System.out.println("memberRepository = " + memberRepository);
+//        this.memberRepository = memberRepository;
+//    }
+//
+//    @Autowired
+//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+//        System.out.println("discountPolicy = " + discountPolicy);
+//        this.discountPolicy = discountPolicy;
+//    }
+
+    @Autowired  // 이 클래스와 같이 생성자가 하나인 경우는 생략도 가능하다.
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
