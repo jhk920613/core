@@ -19,7 +19,7 @@ public class MyLogger {
     }
 
     public void log(String message) {
-        System.out.printf("[%s][%s] {%s}%n", uuid, requestUrl, message);
+        System.out.printf("[%s] [%s] {%s}%n", uuid, requestUrl, message);
     }
 
     @PostConstruct
