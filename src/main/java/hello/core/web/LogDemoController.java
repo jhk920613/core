@@ -14,18 +14,34 @@ import javax.servlet.http.HttpServletRequest;
 public class LogDemoController {
 
     private final LogDemoService logDemoService;
-    private final ObjectProvider<MyLogger> myLoggerProvider;
+    private final MyLogger myLogger;
+//    private final ObjectProvider<MyLogger> myLoggerProvider;
 
+    // Proxy 사용
     @RequestMapping("log-demo")
     @ResponseBody   // 화면이 없이 반환할 때 사용
     public String logDemo(HttpServletRequest request) {
         String requestURL = request.getRequestURL().toString();
-        myLoggerProvider.getObject().setRequestUrl(requestURL);
+        System.out.println("myLogger = " + myLogger.getClass());
+        myLogger.setRequestUrl(requestURL);
 
-        myLoggerProvider.getObject().log("controller test");
+        myLogger.log("controller test");
         logDemoService.logic("testId");
 
         return "OK";
     }
+
+    // Provider 사용
+//    @RequestMapping("log-demo")
+//    @ResponseBody   // 화면이 없이 반환할 때 사용
+//    public String logDemo(HttpServletRequest request) {
+//        String requestURL = request.getRequestURL().toString();
+//        myLoggerProvider.getObject().setRequestUrl(requestURL);
+//
+//        myLoggerProvider.getObject().log("controller test");
+//        logDemoService.logic("testId");
+//
+//        return "OK";
+//    }
 
 }

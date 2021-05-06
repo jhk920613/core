@@ -9,9 +9,16 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LogDemoService {
 
-    private final ObjectProvider<MyLogger> myLoggerProvider;
+    private final MyLogger myLogger;
+//    private final ObjectProvider<MyLogger> myLoggerProvider;
 
+    // Proxy 사용
     public void logic(String id) {
-        myLoggerProvider.getObject().log("service id = " + id);
+        myLogger.log("service id = " + id);
     }
+
+    // Provider 사용
+//    public void logic(String id) {
+//        myLoggerProvider.getObject().log("service id = " + id);
+//    }
 }
